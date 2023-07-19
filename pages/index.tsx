@@ -11,8 +11,13 @@ import Link from "next/link";
 import Image from 'next/image'
 import MySlider from "@/Components/MySlider/MySlider";
 
-function Home({products, sliders,categories, partner}: { products: categoryProducts, sliders: sliderItem[], categories:categoryItem[], partner:partnerItem[] }) {
-    const {t,i18n} = useTranslation('common')
+function Home({products, sliders, categories, partner}: {
+    products: categoryProducts,
+    sliders: sliderItem[],
+    categories: categoryItem[],
+    partner: partnerItem[]
+}) {
+    const {t, i18n} = useTranslation('common')
     const structuredProducts = useMemo(() => {
         return Object.entries(products)
     }, [products])
@@ -72,18 +77,19 @@ function Home({products, sliders,categories, partner}: { products: categoryProdu
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 2
+                    slidesToShow: 2,
+                    slidesToScroll: 1
                 }
             },
             {
                 breakpoint: 576,
                 settings: {
-                    slidesToShow: 1
+                    slidesToShow: 1,
+                    slidesToScroll: 1
                 }
             }
         ]
     };
-
 
 
     return <>
@@ -116,7 +122,8 @@ function Home({products, sliders,categories, partner}: { products: categoryProdu
                             {Array.isArray(sliders) && sliders.map(item => {
                                 const translated = item.translations.find(item => item.locale === i18n.language)
                                 return <li key={item.id} style={{height: '100vh'}}>
-                                    <Image width={1200} height={1200} src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item.photo} alt=""/>
+                                    <Image width={1200} height={1200}
+                                           src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item.photo} alt=""/>
                                     <div data-aos="fade-zoom-left"
                                          data-aos-easing="ease-in-back"
                                          data-aos-delay="600"
@@ -151,7 +158,8 @@ function Home({products, sliders,categories, partner}: { products: categoryProdu
                                         className="elementor-element elementor-element-62019a8 elementor-widget__width-initial elementor-widget elementor-widget-heading"
                                         data-id="62019a8" data-element_type="widget" data-widget_type="heading.default">
                                         <div className="elementor-widget-container text-right">
-                                            <h5 style={{fontSize:18,paddingLeft:"20%"}} className="elementor-heading-title elementor-size-default">{categories.find(category => category.slug === preItem[0])?.translations.find(item => item.locale === i18n.language).name}</h5>
+                                            <h5 style={{fontSize: 18, paddingLeft: "20%"}}
+                                                className="elementor-heading-title elementor-size-default">{categories.find(category => category.slug === preItem[0])?.translations.find(item => item.locale === i18n.language).name}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -346,7 +354,8 @@ function Home({products, sliders,categories, partner}: { products: categoryProdu
                                 className="elementor-element elementor-element-62019a8 elementor-widget__width-initial elementor-widget elementor-widget-heading"
                                 data-id="62019a8" data-element_type="widget" data-widget_type="heading.default">
                                 <div className="elementor-widget-container text-right">
-                                    <h5 style={{fontSize:18,paddingLeft:"20%"}} className="elementor-heading-title elementor-size-default">{t('partners')}</h5>
+                                    <h5 style={{fontSize: 18, paddingLeft: "20%"}}
+                                        className="elementor-heading-title elementor-size-default">{t('partners')}</h5>
                                 </div>
                             </div>
                         </div>
@@ -359,8 +368,8 @@ function Home({products, sliders,categories, partner}: { products: categoryProdu
                                                 <div className="item-image">
                                                     <a href={item.link}>
                                                         <Image width={450} height={450}
-                                                             src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item.photo}
-                                                             alt={item.link}/>
+                                                               src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item.photo}
+                                                               alt={item.link}/>
                                                     </a>
                                                 </div>
                                             </div>
@@ -394,8 +403,8 @@ export async function getServerSideProps(context: any) {
         props: {
             sliders: slidersJson.sliders,
             products: categoryProductsJson.products,
-            categories:categoriesJson.categories,
-            partner:partnersJson.partner,
+            categories: categoriesJson.categories,
+            partner: partnersJson.partner,
             ...(await serverSideTranslations(context.locale, ["common"])),
 
         }
