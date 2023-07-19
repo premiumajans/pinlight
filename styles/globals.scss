@@ -24651,8 +24651,12 @@ button.mfp-close.ekit-popup-close {
   margin-bottom: 30px !important;
 }
 
+.elementor-popup-modal {
+  overflow: hidden;
+}
+
 .dialog-widget .elementor a {
-  font-size: 1em;
+  font-size: 0.8em;
 }
 
 .site-mobile-navigation .level-0 .menu-item-text {
