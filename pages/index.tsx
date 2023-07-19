@@ -202,7 +202,7 @@ function Home({products, sliders,categories, partner}: { products: categoryProdu
                                             (item) => item.locale === i18n.language
                                         );
                                         return (
-                                            <Link href={'/products/' + item.id}>
+                                            <Link key={item.id} href={'/products/' + item.id}>
                                                 <div>
                                                     <div
                                                         data-elementor-type="jet-listing-items"
