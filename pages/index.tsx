@@ -116,7 +116,7 @@ function Home({products, sliders,categories, partner}: { products: categoryProdu
                             {Array.isArray(sliders) && sliders.map(item => {
                                 const translated = item.translations.find(item => item.locale === i18n.language)
                                 return <li key={item.id} style={{height: '100vh'}}>
-                                    <img src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item.photo} alt=""/>
+                                    <Image width={1200} height={1200} src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item.photo} alt=""/>
                                     <div data-aos="fade-zoom-left"
                                          data-aos-easing="ease-in-back"
                                          data-aos-delay="600"
