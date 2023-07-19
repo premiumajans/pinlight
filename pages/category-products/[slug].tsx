@@ -9,19 +9,20 @@ import Pagination from "@/Components/Pagination/Pagination";
 import NotFound from "@/Components/NotFound/NotFound";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
-const Media =  ({media}:{media:productItem[]}) => {
-    const {t, i18n} = useTranslation('common')
+const Products = ({products}:{products:productItem[]}) => {
+
+    const {t,i18n} = useTranslation('common')
     const [pagination, setPagination] = useState(1)
 
     return <>
         <Head>
-            <title>{t('media')}</title>
+            <title>{t('products')}</title>
         </Head>
-        {typeof media !== 'string' ? <>
+        {typeof products !== 'string' ? <>
             <div id="site-main" className="site-main">
                 <div id="main-content" className="main-content">
                     <div id="primary" className="content-area">
-                        <PageTitle pageTitle={t('media')} currentAddress={t('media')}/>
+                        <PageTitle pageTitle={t('products')} currentAddress={t('products')}/>
 
                         <div id="content" data-aos="fade-zoom-in"
                              data-aos-easing="ease-in-back"
@@ -32,11 +33,11 @@ const Media =  ({media}:{media:productItem[]}) => {
                                 <div className="section-container p-l-r">
                                     <div className="row justify-content-center">
                                         <div className="col-xl-12 col-lg-12 col-md-12 col-12">
-                                            {Array.isArray(media) ? <>
+                                            {Array.isArray(products) ? <>
                                                 <div className="products-topbar clearfix">
                                                     <div className="products-topbar-left">
                                                         <div className="products-count">
-                                                            {t('showing-result') + media?.length}
+                                                            {t('showing-result') + products?.length}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -46,9 +47,9 @@ const Media =  ({media}:{media:productItem[]}) => {
                                                          role="tabpanel">
                                                         <div className="products-list grid">
                                                             <div className="row">
-                                                                {media.slice((pagination - 1) * 10, (pagination - 1) * 10 + 10).map(item => {
+                                                                {products.slice((pagination - 1) * 10, (pagination - 1) * 10 + 10).map(item => {
                                                                     return <Link key={item.id}
-                                                                                 href={'/media/' + item.id}
+                                                                                 href={'/products/' + item.id}
                                                                                  className="col-xl-3 col-lg-4 col-md-4 col-sm-6">
                                                                         <div
                                                                             className="products-entry clearfix product-wapper">
@@ -83,7 +84,8 @@ const Media =  ({media}:{media:productItem[]}) => {
                                         </div>
                                     </div>
 
-                                    <Pagination pagination={pagination} data={media} setPagination={setPagination}/>
+                                    <Pagination pagination={pagination} data={products} setPagination={setPagination}/>
+
                                 </div>
                             </div>
                         </div>
@@ -95,14 +97,17 @@ const Media =  ({media}:{media:productItem[]}) => {
 };
 
 export async function  getServerSideProps(context:any) {
-    const media = await fetch(process.env['NEXT_PUBLIC_MAIN_PATH'] + '/media/')
-    const mediaJson = await media.json()
+    const {query} = context
+    const products = await fetch(process.env['NEXT_PUBLIC_MAIN_PATH'] + `/category/${query.slug}/product`)
+    const productsJson = await products.json()
+    console.log(productsJson, 5)
     return {
         props:{
-            media:mediaJson.media,
+            products:productsJson.product || productsJson.message,
             ...(await serverSideTranslations(context.locale, ["common"])),
 
         }
     }
 }
-export default Media;
+
+export default Products;

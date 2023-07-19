@@ -5,7 +5,6 @@ import {productItem} from "@/interfaces/common";
 import {useTranslation} from "next-i18next";
 import ReactHtmlParser from 'react-html-parser';
 import Head from "next/head";
-import React from "react";
 import {useRouter} from "next/router";
 import NotFound from "@/Components/NotFound/NotFound";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
@@ -14,7 +13,6 @@ const ProductItem = ({product}:{product:productItem}) => {
     const {query} = useRouter()
     const {i18n} = useTranslation('common')
     const current = product.translations?.find(item => item.locale === i18n.language)
-
     return <>
         <Head>
             <meta name="keywords" content={current?.name}/>
@@ -24,6 +22,7 @@ const ProductItem = ({product}:{product:productItem}) => {
 
             <meta property="og:title" content={current?.name ? current?.name + ' | PINLIGHT' : 'PINLIGHT'}/>
             <meta property="og:description" content={current?.description}/>
+            <meta property="keywords" content={current?.keywords}/>
             <meta property="og:image" content={process.env.NEXT_PUBLIC_MAIN_PATH_WITHOUT_API! + product.photo}/>
             <meta property="og:url"
                   content={process.env.NEXT_PUBLIC_MAIN_PATH_WITHOUT_API + 'writer/' + query.productId}/>
@@ -86,7 +85,12 @@ const ProductItem = ({product}:{product:productItem}) => {
 
 export async function  getServerSideProps(context:any) {
     const {query} = context
-    const product = await fetch(process.env['NEXT_PUBLIC_MAIN_PATH'] + '/product/' + query.productId)
+    let product
+    if(!isNaN(+query.productId) ) {
+        product = await fetch(process.env['NEXT_PUBLIC_MAIN_PATH'] + '/product/' + query.productId)
+    } else {
+        product = await fetch(process.env['NEXT_PUBLIC_MAIN_PATH'] + `/category/${query.productId}/product`)
+    }
     const productJson = await product.json()
     return {
         props:{

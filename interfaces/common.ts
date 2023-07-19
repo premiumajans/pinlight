@@ -15,6 +15,39 @@ interface productPhotos {
     "photo": string
 }
 
+export  interface categoryItem {
+    "id": number,
+    "slug": string,
+    "name": string,
+    "translations":categoryTranslationItem[]
+}
+
+interface  categoryTranslationItem {
+    "id": number,
+    "category_id": number,
+    "locale": string,
+    "name": string,
+}
+export interface categoryProducts {
+    "id":number,
+    "category_id": number,
+    "photo": string,
+    "catalog_pdf": null,
+    "keywords": string,
+    "alternative": string,
+    "status": number,
+    "name": string,
+    "translations": categoryProductsTranslationsItem[]
+}
+
+export  interface  categoryProductsTranslationsItem   {
+    "id": number,
+    "product_id": number,
+    "locale": string,
+    "name": string,
+    "description": string,
+}
+
 interface productsTranslationItem {
     "id": number,
     "product_id": number,

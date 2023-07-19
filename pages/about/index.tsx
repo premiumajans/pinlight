@@ -17,7 +17,7 @@ const About = ({about, partner}: { about: productItem[], partner: partnerItem[] 
         arrows: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 5,
+        slidesToShow: partner.length <= 3 ? partner.length : 4,
         slidesToScroll: 1,
         responsive: [
             {

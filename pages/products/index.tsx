@@ -1,12 +1,10 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import PageTitle from "../../Components/PageTitle/PageTitle";
 import Link from "next/link";
 import {useTranslation} from "next-i18next";
 import {productItem} from "@/interfaces/common";
 import Image from "next/image";
-import {it} from "node:test";
 import Head from "next/head";
-import ReactHtmlParser from "react-html-parser";
 import Pagination from "@/Components/Pagination/Pagination";
 import NotFound from "@/Components/NotFound/NotFound";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";

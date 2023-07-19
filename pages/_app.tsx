@@ -8,14 +8,14 @@ import Header from "@/Components/Header/Header";
 import {StrictMode, useEffect, useState} from "react";
 import AOS from 'aos'
 import 'aos/dist/aos.css';
-import {appWithTranslation} from "next-i18next";
 import {useRouter} from "next/router";
+import {appWithTranslation} from "next-i18next";
 
 function App({Component, pageProps}: AppProps) {
-    const [loading, setLoading] = useState(false)
     const [visible, setVisible] = useState(false)
     const router = useRouter()
-
+    const [loading, setLoading] = useState(false)
+    const [modal, setModal] = useState(false)
     useEffect(() => {
         AOS.init();
         if (typeof window !== undefined) {
@@ -46,7 +46,7 @@ function App({Component, pageProps}: AppProps) {
 
     return <>
 
-        <Header/>
+        <Header modal={modal} setModal={setModal}/>
         <StrictMode>
             <Component {...pageProps}/>
         </StrictMode>
@@ -55,13 +55,13 @@ function App({Component, pageProps}: AppProps) {
         <BackToTop/>
 
         <SearchWraper/>
-        {visible ? <MobileMenu/> : ''}
         {loading ? <div className="page-preloader">
             <div className="loader">
                 <div></div>
                 <div></div>
             </div>
-        </div> : ''}
+        </div> : visible ? <MobileMenu modal={modal} setModal={setModal}/> : ''}
+
     </>
 }
 
