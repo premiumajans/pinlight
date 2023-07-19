@@ -9,7 +9,7 @@ const Footer = () => {
     const {t} = useTranslation('common')
 
     return <>
-        {path !== '/' && <footer id="site-footer" className="site-footer background m-t-0">
+        <footer id="site-footer" className="site-footer background m-t-0">
             <div className="footer-bottom">
                 <div className="section-padding">
                     <div className="section-container d-flex justify-content-between flex-wrap">
@@ -24,7 +24,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-        </footer>}
+        </footer>
     </>
 
 };

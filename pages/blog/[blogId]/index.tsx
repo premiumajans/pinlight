@@ -26,7 +26,7 @@ const BlogItem = ({blog}:{blog:productItem}) => {
                 {translated?.name ? translated?.name + ' | PINLIGHT' : 'PINLIGHT'}
             </title>
 
-            <meta property="og:title" content={translated?.name ? translated?.name + ' | RAMA GROUP' : 'RAMA GROUP'}/>
+            <meta property="og:title" content={translated?.name ? translated?.name + ' | PINLIGHT' : 'PINLIGHT'}/>
             <meta property="og:description"
                   content={translations?.find(item => item.locale === i18n.language)?.description}/>
             <meta property="og:image" content={process.env.NEXT_PUBLIC_MAIN_PATH_WITHOUT_API! + photo}/>
@@ -71,7 +71,7 @@ const BlogItem = ({blog}:{blog:productItem}) => {
                                             {ReactHtmlParser(translated?.description!)}
                                             <div className="content-img">
                                                 {photos?.map((item, index) => {
-                                                    return <Image data-aos="fade-up"
+                                                    return <Image  data-aos="fade-up"
                                                                   data-aos-duration="700" style={{cursor: 'pointer'}}
                                                                   onClick={() => {
                                                                       setSlideIndex(index);

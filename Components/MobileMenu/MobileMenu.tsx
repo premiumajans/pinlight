@@ -4,7 +4,7 @@ import {useTranslation} from "next-i18next";
 import {useRouter} from "next/router";
 import CustomLanguageDropdown from "@/Components/CustomLanguageDropdown/CustomLanguageDropdown";
 
-const MobileMenu = () => {
+const MobileMenu = ({modal, setModal}) => {
     const {menu, changeMenu} = store
     const {push} = useRouter()
     const {t} = useTranslation('common')
@@ -25,32 +25,6 @@ const MobileMenu = () => {
                             }}><span className="menu-item-text">{t('about')}</span></a>
 
                         </li>
-                        <li className="level-0 menu-item">
-                            <a onClick={() => {
-                                changeMenu()
-                                push("/catalog")
-
-
-                            }}><span className="menu-item-text">{t('catalog')}</span></a>
-
-                        </li>
-                        <li className="level-0 menu-item">
-                            <a onClick={() => {
-                                changeMenu()
-                                push("/media")
-
-
-                            }}><span className="menu-item-text">{t('media')}</span></a>
-
-                        </li>
-                        <li className="level-0 menu-item">
-                            <a onClick={() => {
-                                changeMenu()
-                                push("/services")
-
-
-                            }}><span className="menu-item-text">{t('services')}</span></a>
-                        </li>
 
                         <li className="level-0 menu-item">
                             <a onClick={() => {
@@ -61,24 +35,6 @@ const MobileMenu = () => {
                             }}><span className="menu-item-text">{t('products')}</span></a>
                         </li>
 
-                        <li className="level-0 menu-item">
-                            <a onClick={() => {
-                                changeMenu()
-                                push("/portfolio")
-
-
-                            }}><span className="menu-item-text">{t('portfolio')}</span></a>
-                        </li>
-
-
-                        <li className="level-0 menu-item">
-                            <a onClick={() => {
-                                changeMenu()
-                                push("/blog")
-
-
-                            }}><span className="menu-item-text">{t('blog')}</span></a>
-                        </li>
 
                         <li className="level-0 menu-item">
                             <a onClick={() => {
@@ -87,6 +43,12 @@ const MobileMenu = () => {
 
 
                             }}><span className="menu-item-text">{t('contact-us')}</span></a>
+                        </li>
+                        <li className="level-0 menu-item">
+                            <a onClick={() => {
+                                changeMenu()
+                                setModal(true)
+                            }}><span className="menu-item-text">{t('categories')}</span></a>
                         </li>
                         <li><CustomLanguageDropdown direction={'down'}/></li>
                     </ul>

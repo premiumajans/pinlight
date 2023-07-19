@@ -1,14 +1,14 @@
-'use client'
 import React, {useState} from 'react';
 import Slider from "react-slick";
 import './MySlider'
 import {productItem} from "@/interfaces/common";
-import products from "@/pages/products";
 import Image from "next/image";
 
 const SyncSlider = ({product}: { product: productItem }) => {
+
     const settings = {
-        slidesToShow: 5,
+        slidesToShow: product.photos.length > 4 ? 4 : product.photos.length,
+        infinite:true,
         slidesToScroll: 1,
         arrows: true,
         prevArrow: <button><i style={{fontSize: 16}} className="slick-arrow fa fa-angle-left"></i>
@@ -53,20 +53,21 @@ const SyncSlider = ({product}: { product: productItem }) => {
         <div className="col-md-2">
             <div className="content-thumbnail-scroll">
                 <Slider asNavFor={nav1} ref={(slider2) => setNav2(slider2)} className={'slider-for'} {...settings}>
-
                     <div className="img-item slick-slide">
                         <span className="img-thumbnail-scroll">
                             <Image  style={{width:116, height:100}} width="600" height="600"
                                  src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + product?.photo}
-                                 alt={product.name}/>
+                                 alt={product.name}
+                            />
                         </span>
                     </div>
                     {product.photos?.map(item => {
-                        return   <div key={product.id} className="img-item slick-slide">
+                        return   <div key={item.id} className="img-item slick-slide">
                         <span className="img-thumbnail-scroll">
                             <Image  style={{width:116, height:100}} width="600" height="600"
                                  src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item.photo}
-                                 alt={product.name}/>
+                                 alt={product.name}
+                            />
                         </span>
                         </div>
                     })}
@@ -82,15 +83,17 @@ const SyncSlider = ({product}: { product: productItem }) => {
                         <span className="img-thumbnail-scroll">
                             <Image style={{ height:600}} width="600" height="600"
                                  src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + product.photo}
-                                 alt={product.name}/>
+                                 alt={product.name}
+                            />
                         </span>
                     </div>
                     {product.photos?.map(item => {
-                        return   <div key={product.id} className="img-item slick-slide">
+                        return   <div key={item.id} className="img-item slick-slide">
                         <span className="img-thumbnail-scroll">
                             <Image style={{height:600}} width="600" height="600"
                                  src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item?.photo}
-                                 alt={product.name}/>
+                                 alt={product.name}
+                            />
                         </span>
                         </div>
                     })}
