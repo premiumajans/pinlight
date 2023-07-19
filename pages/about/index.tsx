@@ -117,7 +117,7 @@ const About = ({about, partner}: { about: productItem[], partner: partnerItem[] 
                                                         return <div key={item.id} className="item slick-slide">
                                                             <div className="item-image">
                                                                 <a href={item.link}>
-                                                                    <img width="450" height="450"
+                                                                    <Image width="450" height="450"
                                                                          src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item.photo}
                                                                          alt={item.link}/>
                                                                 </a>

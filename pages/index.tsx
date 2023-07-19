@@ -8,6 +8,7 @@ import NotFound from "@/Components/NotFound/NotFound";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useMemo} from 'react'
 import Link from "next/link";
+import Image from 'next/image'
 import MySlider from "@/Components/MySlider/MySlider";
 
 function Home({products, sliders,categories, partner}: { products: categoryProducts, sliders: sliderItem[], categories:categoryItem[], partner:partnerItem[] }) {
@@ -357,7 +358,7 @@ function Home({products, sliders,categories, partner}: { products: categoryProdu
                                             return <div key={item.id} className="item slick-slide">
                                                 <div className="item-image">
                                                     <a href={item.link}>
-                                                        <img width="450" height="450"
+                                                        <Image width={450} height={450}
                                                              src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item.photo}
                                                              alt={item.link}/>
                                                     </a>
