@@ -91,7 +91,7 @@ const About = ({about, partner}: { about: productItem[], partner: partnerItem[] 
                                                                             className="banner-image">
                                                                             <a style={{height: '100%'}}>
                                                                                 <Image width={600} height={600}
-                                                                                       style={{height:350}}
+                                                                                       style={{height:'100%'}}
                                                                                        src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item.photo}
                                                                                        alt={item.name}/>
                                                                             </a>
