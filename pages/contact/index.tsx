@@ -207,10 +207,11 @@ const Contact = () => {
                             <section className="section section-padding">
                                 <div className="section-container small">
                                     <div className="block block-contact-map">
-                                        <div className="block-widget-wrap">
+                                        <div className="block-widget-wrap pt-4">
                                             <iframe
-                                                src="https://maps.google.com/maps?q=London%20Eye%2C%20London%2C%20United%20Kingdom&amp;t=m&amp;z=10&amp;output=embed&amp;iwloc=near"
-                                                aria-label="London Eye, London, United Kingdom"></iframe>
+                                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.1581596509604!2d49.83588560416073!3d40.405346926104215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4030878a54858e8f%3A0x5ac0ed016cb0dd50!2s31%20Mammad%20Araz%2C%20Baku%201069!5e0!3m2!1sen!2saz!4v1689834141058!5m2!1sen!2saz"
+                                                width="600" height="450" style={{border:0}}
+                                                loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                                         </div>
                                     </div>
                                 </div>
