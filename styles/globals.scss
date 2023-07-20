@@ -24651,6 +24651,13 @@ button.mfp-close.ekit-popup-close {
   margin-bottom: 30px !important;
 }
 
+.banner-image {
+  height: 100%;
+  a {
+    height: 100%;
+  }
+}
+
 .elementor-popup-modal {
   overflow: hidden;
 }
@@ -24735,5 +24742,11 @@ button.mfp-close.ekit-popup-close {
 @media (max-width: 992px) {
   .slider-for {
     display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-row {
+    flex-direction: column-reverse;
   }
 }

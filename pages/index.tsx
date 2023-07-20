@@ -367,7 +367,7 @@ function Home({products, sliders, categories, partner}: {
                                             return <div key={item.id} className="item slick-slide">
                                                 <div className="item-image">
                                                     <a href={item.link}>
-                                                        <Image width={450} height={450}
+                                                        <Image style={{height:300, width:300, padding:10, objectFit:'cover'}}  width={450} height={450}
                                                                src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item.photo}
                                                                alt={item.link}/>
                                                     </a>

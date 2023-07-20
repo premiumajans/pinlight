@@ -15,7 +15,7 @@ class AppStore {
     }
 
     changeSettings = () => {
-        fetch('https://rama.pleskdemo.com/api/settings')
+        fetch(process.env['NEXT_PUBLIC_MAIN_PATH'] + '/settings')
             .then(res => res.json())
             .then(res => {
                 this.settings = res.settings

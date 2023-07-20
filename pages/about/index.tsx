@@ -10,6 +10,7 @@ import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const About = ({about, partner}: { about: productItem[], partner: partnerItem[] }) => {
 
+
     const {t, i18n} = useTranslation('common')
 
     const settingsBrand = {
@@ -68,10 +69,9 @@ const About = ({about, partner}: { about: productItem[], partner: partnerItem[] 
                                                         <div className="banners">
                                                             {Array.isArray(about) && about.map(item => {
                                                                 const translated = item.translations.find(item => item.locale === i18n.language)
-
-                                                                return <div  key={item.id}
-                                                                            className="row my-4">
-                                                                    <div className="col-md-6 banner-infor background-2">
+                                                                return item.id % 2 != 0 ?  <div  key={item.id}
+                                                                                                 className="row my-4">
+                                                                    <div className={`${item?.photo?.length ? 'col-md-6' : 'col-md-12 p-3'} banner-infor background-2`}>
                                                                         <div className="banner-wrapper-infor">
                                                                             <div className="info">
                                                                                 <div className="content">
@@ -86,18 +86,47 @@ const About = ({about, partner}: { about: productItem[], partner: partnerItem[] 
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="col-md-6">
+                                                                    {item?.photo?.length ? <div className="col-md-6">
                                                                         <div
                                                                             className="banner-image">
                                                                             <a style={{height: '100%'}}>
                                                                                 <Image width={600} height={600}
                                                                                        style={{height:'100%'}}
-                                                                                       src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item.photo}
+                                                                                       src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item?.photo}
                                                                                        alt={item.name}/>
                                                                             </a>
                                                                         </div>
+                                                                    </div> : ''}
+                                                                </div> :  <div  key={item.id}
+                                                                                      className="row my-4">
+                                                                    {item?.photo?.length ? <div className="col-md-6">
+                                                                        <div
+                                                                            className="banner-image">
+                                                                            <a style={{height: '100%'}}>
+                                                                                <Image width={600} height={600}
+                                                                                       style={{height:'100%'}}
+                                                                                       src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item?.photo}
+                                                                                       alt={item.name}/>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div> : ''}
+                                                                    <div className={`${item?.photo?.length ? 'col-md-6' : 'col-md-12 p-3'} banner-infor background-2`}>
+                                                                        <div className="banner-wrapper-infor">
+                                                                            <div className="info">
+                                                                                <div className="content">
+                                                                                    <h3 style={{overflowWrap: 'anywhere'}}
+                                                                                        className="title-banner">{translated?.title}</h3>
+                                                                                    <div
+                                                                                        style={{overflowWrap: 'anywhere'}}
+                                                                                        className="banner-image-description">
+                                                                                        {ReactHtmlParser(translated?.description!)}
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             })}
                                                         </div>
                                                     </div>
@@ -117,8 +146,8 @@ const About = ({about, partner}: { about: productItem[], partner: partnerItem[] 
                                                         return <div key={item.id} className="item slick-slide">
                                                             <div className="item-image">
                                                                 <a href={item.link}>
-                                                                    <Image width="450" height="450"
-                                                                         src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item.photo}
+                                                                    <Image style={{height:300, width:300, padding:10, objectFit:'cover'}} width="450" height="450"
+                                                                         src={process.env['NEXT_PUBLIC_MAIN_PATH_WITHOUT_API'] + item?.photo}
                                                                          alt={item.link}/>
                                                                 </a>
                                                             </div>

@@ -171,7 +171,7 @@ const Header = ({modal, setModal}) => {
                                                         data-nav="{&quot;enabled&quot;:false,&quot;type&quot;:null,&quot;more_el&quot;:null,&quot;query&quot;:[],&quot;widget_settings&quot;:{&quot;lisitng_id&quot;:1323,&quot;posts_num&quot;:7,&quot;columns&quot;:4,&quot;columns_tablet&quot;:3,&quot;columns_mobile&quot;:1,&quot;is_archive_template&quot;:&quot;&quot;,&quot;post_status&quot;:[&quot;publish&quot;],&quot;use_random_posts_num&quot;:&quot;&quot;,&quot;max_posts_num&quot;:9,&quot;not_found_message&quot;:&quot;No data was found&quot;,&quot;is_masonry&quot;:false,&quot;equal_columns_height&quot;:&quot;&quot;,&quot;use_load_more&quot;:&quot;&quot;,&quot;load_more_id&quot;:&quot;&quot;,&quot;load_more_type&quot;:&quot;click&quot;,&quot;load_more_offset&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;use_custom_post_types&quot;:&quot;&quot;,&quot;custom_post_types&quot;:[],&quot;hide_widget_if&quot;:&quot;&quot;,&quot;carousel_enabled&quot;:&quot;&quot;,&quot;slides_to_scroll&quot;:&quot;1&quot;,&quot;arrows&quot;:&quot;true&quot;,&quot;arrow_icon&quot;:&quot;fa fa-angle-left&quot;,&quot;dots&quot;:&quot;&quot;,&quot;autoplay&quot;:&quot;true&quot;,&quot;autoplay_speed&quot;:5000,&quot;infinite&quot;:&quot;true&quot;,&quot;center_mode&quot;:&quot;&quot;,&quot;effect&quot;:&quot;slide&quot;,&quot;speed&quot;:500,&quot;inject_alternative_items&quot;:&quot;&quot;,&quot;injection_items&quot;:[],&quot;scroll_slider_enabled&quot;:&quot;&quot;,&quot;scroll_slider_on&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;custom_query&quot;:false,&quot;custom_query_id&quot;:&quot;7&quot;,&quot;_element_id&quot;:&quot;&quot;}}"
                                                         data-page="1" data-pages="1" data-listing-source="terms"
                                                         data-listing-id="1323" data-query-id="">
-                                                        <ol style={{display:'flex', flexWrap:'wrap'}}>
+                                                        <ol style={{display: 'flex', flexWrap: 'wrap'}}>
                                                             {categories.map(item => {
                                                                 return <li key={item.id} className={' col-lg-6 col-12'}>
                                                                     <h2 className="elementor-heading-title elementor-size-default">
@@ -257,15 +257,6 @@ const Header = ({modal, setModal}) => {
                     </div>
                 </div>
 
-                {/*<div className="header-mobile-fixed">*/}
-
-                {/*    <div className="header-page-link">*/}
-                {/*        <div onClick={changeSearch} className="search-box">*/}
-                {/*            <div className="search-toggle"><i className="wpb-icon-magnifying-glass"></i></div>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-
-                {/*</div>*/}
             </div>
 
             <div style={{background: 'black', color: 'white'}} className="header-desktop">
@@ -278,24 +269,24 @@ const Header = ({modal, setModal}) => {
 
                                         <nav id="main-navigation">
                                             <ul id="menu-main-menu" className="menu">
-                                                <li className={"level-0 menu-item " + (path === ("/about") ? 'current-menu-item' : '')}>
-                                                    <Link href={"/about"} locale={i18n?.language}><span
-                                                        className="menu-item-text">{t('about')}</span></Link>
-                                                </li>
                                                 <li className={"level-0 menu-item " + (path === ("/products") ? 'current-menu-item' : '')}>
                                                     <Link href={"/products"} locale={i18n?.language}><span
                                                         className="menu-item-text">{t('products')}</span></Link>
                                                 </li>
-                                                <li className={"level-0 menu-item " + (path === ('/contact') ? 'current-menu-item' : '')}>
-                                                    <Link href={"/contact"} locale={i18n?.language}><span
-                                                        className="menu-item-text">{t('contact-us')}</span></Link>
-                                                </li>
                                                 <li onClick={() => setModal(!modal)} style={{cursor: 'pointer'}}
-                                                    className={"level-0 menu-item " + (path === ('/contact') ? 'current-menu-item' : '')}>
+                                                    className={"level-0 menu-item " + (path === ('') ? 'current-menu-item' : '')}>
                                                     <a>
                                                         <span
                                                             className="menu-item-text">{t('categories')}</span>
                                                     </a>
+                                                </li>
+                                                <li className={"level-0 menu-item " + (path === ("/about") ? 'current-menu-item' : '')}>
+                                                    <Link href={"/about"} locale={i18n?.language}><span
+                                                        className="menu-item-text">{t('about')}</span></Link>
+                                                </li>
+                                                <li className={"level-0 menu-item " + (path === ('/contact') ? 'current-menu-item' : '')}>
+                                                    <Link href={"/contact"} locale={i18n?.language}><span
+                                                        className="menu-item-text">{t('contact-us')}</span></Link>
                                                 </li>
                                             </ul>
                                         </nav>

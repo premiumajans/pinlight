@@ -16,6 +16,21 @@ const MobileMenu = ({modal, setModal}) => {
             <div className="mm-panels">
                 <div className="mm-panel mm-opened" id="mm-0">
                     <ul className="menu mm-listview">
+
+                        <li className="level-0 menu-item">
+                            <a onClick={() => {
+                                changeMenu()
+                                push("/products")
+
+
+                            }}><span className="menu-item-text">{t('products')}</span></a>
+                        </li>
+                        <li className="level-0 menu-item">
+                            <a onClick={() => {
+                                changeMenu()
+                                setModal(true)
+                            }}><span className="menu-item-text">{t('categories')}</span></a>
+                        </li>
                         <li className="level-0 menu-item ">
                             <a onClick={() => {
                                 changeMenu()
@@ -26,15 +41,6 @@ const MobileMenu = ({modal, setModal}) => {
 
                         </li>
 
-                        <li className="level-0 menu-item">
-                            <a onClick={() => {
-                                changeMenu()
-                                push("/products")
-
-
-                            }}><span className="menu-item-text">{t('products')}</span></a>
-                        </li>
-
 
                         <li className="level-0 menu-item">
                             <a onClick={() => {
@@ -43,12 +49,6 @@ const MobileMenu = ({modal, setModal}) => {
 
 
                             }}><span className="menu-item-text">{t('contact-us')}</span></a>
-                        </li>
-                        <li className="level-0 menu-item">
-                            <a onClick={() => {
-                                changeMenu()
-                                setModal(true)
-                            }}><span className="menu-item-text">{t('categories')}</span></a>
                         </li>
                         <li><CustomLanguageDropdown direction={'down'}/></li>
                     </ul>
